@@ -40,13 +40,14 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  // String titleInput;
-  // String amountInput;
+  const MyHomePage({key}) : super(key: key);
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  //_MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   final List<Transaction> _userTransactions = [
     // Transaction(
     //   id: 't1',
@@ -61,6 +62,25 @@ class _MyHomePageState extends State<MyHomePage> {
     //   date: DateTime.now(),
     // ),
   ];
+
+  static const List<Tab> myTabs = <Tab>[
+    Tab(text: 'LEFT'),
+    Tab(text: 'RIGHT'),
+  ];
+
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: myTabs.length);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
@@ -109,6 +129,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: myTabs,
+        ),
         title: Text(
           'Personal Expenses',
         ),
@@ -119,15 +143,23 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            //Chart(_recentTransactions),
-            TransactionList(_userTransactions, _deleteTransaction),
-          ],
-        ),
+      body: TabBarView(
+        controller: _tabController,
+        children: myTabs.map((Tab tab) {
+          final String label = tab.text.toLowerCase();
+          return Center(
+            child: SingleChildScrollView(
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Chart(_recentTransactions),
+                  TransactionList(_userTransactions, _deleteTransaction),
+                ],
+              ),
+            ),
+          );
+        }).toList(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
