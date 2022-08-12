@@ -150,7 +150,6 @@ class _MyHomePageState extends State<MyHomePage>
           return Center(
             child: SingleChildScrollView(
               child: Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Chart(_recentTransactions),
