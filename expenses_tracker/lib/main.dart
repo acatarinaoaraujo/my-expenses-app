@@ -145,20 +145,10 @@ class _MyHomePageState extends State<MyHomePage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: myTabs.map((Tab tab) {
-          final String label = tab.text.toLowerCase();
-          return Center(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Chart(_recentTransactions),
-                  TransactionList(_userTransactions, _deleteTransaction),
-                ],
-              ),
-            ),
-          );
-        }).toList(),
+        children: <Widget>[
+          Chart(_recentTransactions),
+          TransactionList(_userTransactions, _deleteTransaction),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
