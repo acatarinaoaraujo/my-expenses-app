@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Weekly Expenses',
       theme: ThemeData(
-          primarySwatch: Colors.purple,
+          primarySwatch: Colors.indigo,
           accentColor: Colors.amber,
           // errorColor: Colors.red,
           fontFamily: 'Quicksand',
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Personal Expenses',
+          'My Weekly Expenses',
         ),
         actions: <Widget>[
           IconButton(
