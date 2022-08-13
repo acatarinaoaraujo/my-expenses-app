@@ -64,8 +64,8 @@ class _MyHomePageState extends State<MyHomePage>
   ];
 
   static const List<Tab> myTabs = <Tab>[
-    Tab(text: 'LEFT'),
-    Tab(text: 'RIGHT'),
+    Tab(icon: Icon(Icons.insights)),
+    Tab(icon: Icon(Icons.list)),
   ];
 
   TabController _tabController;
