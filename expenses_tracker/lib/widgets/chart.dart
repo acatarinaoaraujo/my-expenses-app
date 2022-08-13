@@ -42,7 +42,7 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 6,
+      elevation: 20,
       margin: EdgeInsets.all(20),
       child: Padding(
         padding: EdgeInsets.all(10),
