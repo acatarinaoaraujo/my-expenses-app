@@ -143,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage>
           ),
         ],
       ),
+      backgroundColor: Color.fromARGB(227, 66, 83, 182),
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
