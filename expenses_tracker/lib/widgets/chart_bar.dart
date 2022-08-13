@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ChartBar extends StatelessWidget {
@@ -9,20 +11,15 @@ class ChartBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Container(
-          height: 20,
-          child: FittedBox(
-            child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
-          ),
-        ),
         SizedBox(
-          height: 4,
+          width: 10,
         ),
         Container(
-          height: 60,
-          width: 10,
+          height: 16,
+          width: 100,
           child: Stack(
             children: <Widget>[
               Container(
@@ -33,7 +30,7 @@ class ChartBar extends StatelessWidget {
                 ),
               ),
               FractionallySizedBox(
-                heightFactor: spendingPctOfTotal,
+                widthFactor: spendingPctOfTotal,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
@@ -45,9 +42,14 @@ class ChartBar extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 4,
+          width: 10,
         ),
-        Text(label),
+        Container(
+          height: 20,
+          child: FittedBox(
+            child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
+          ),
+        ),
       ],
     );
   }
