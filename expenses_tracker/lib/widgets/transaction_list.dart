@@ -16,19 +16,33 @@ class TransactionList extends StatelessWidget {
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[
+                SizedBox(
+                  height: 50,
+                ),
                 Text(
-                  'No transactions added yet!',
-                  style: Theme.of(context).textTheme.headline6,
+                  'Your list is empty!',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                Container(
+                  height: 360,
+                  child: Image.asset(
+                    'assets/images/empty-list.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Text(
+                  'Click on the button below to add new expenses.',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+                Icon(
+                  Icons.keyboard_arrow_down,
+                  color: Theme.of(context).primaryColorLight,
+                  size: 30.0,
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                    height: 200,
-                    child: Image.asset(
-                      'assets/images/waiting.png',
-                      fit: BoxFit.cover,
-                    )),
               ],
             )
           : ListView.builder(

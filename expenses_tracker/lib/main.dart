@@ -18,10 +18,23 @@ class MyApp extends StatelessWidget {
           // errorColor: Colors.red,
           fontFamily: 'Quicksand',
           textTheme: ThemeData.light().textTheme.copyWith(
+                headline4: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+                headline5: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 22,
+                  color: Colors.white,
+                ),
                 headline6: TextStyle(
                   fontFamily: 'OpenSans',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20,
+                  color: Colors.white,
                 ),
                 button: TextStyle(color: Colors.white),
               ),
@@ -134,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage>
           tabs: myTabs,
         ),
         title: Text(
-          'Personal Expenses',
+          'Daily Expenses',
         ),
         actions: <Widget>[
           IconButton(
