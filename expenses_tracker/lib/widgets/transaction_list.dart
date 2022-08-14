@@ -54,12 +54,28 @@ class TransactionList extends StatelessWidget {
                     horizontal: 14,
                   ),
                   child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      child: Padding(
-                        padding: EdgeInsets.all(6),
-                        child: FittedBox(
-                          child: Text('\$${transactions[index].amount}'),
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Container(
+                        height: 40.0,
+                        width: 80.0,
+                        color: Theme.of(context).accentColor,
+                        child: Padding(
+                          padding: EdgeInsets.all(6),
+                          child: FittedBox(
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.attach_money,
+                                  color: Theme.of(context).primaryColor,
+                                  size: 28.0,
+                                ),
+                                Text('${transactions[index].amount}',
+                                    style:
+                                        Theme.of(context).textTheme.headline6)
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -68,7 +84,7 @@ class TransactionList extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     subtitle: Text(
-                      DateFormat.yMMMd().format(transactions[index].date),
+                      DateFormat.MMMMEEEEd().format(transactions[index].date),
                     ),
                     trailing: IconButton(
                       icon: Icon(Icons.delete),
